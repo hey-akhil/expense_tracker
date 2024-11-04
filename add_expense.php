@@ -291,15 +291,14 @@ $(document).ready(function() {
     });
 
     // Populate delete modal with category data
-    $('#deleteModal').on('show.bs.modal', function(event) {
-        const button = $(event.relatedTarget);
-        const categoryId = button.data('category-id');
-        const categoryName = button.data('category-name');
-        
-        const modal = $(this);
-        modal.find('#categoryId').val(categoryId);
-        modal.find('#categoryName').text(categoryName);
-    });
+$('#deleteModal').on('show.bs.modal', function(event) {
+    const button = $(event.relatedTarget);
+    const categoryId = button.data('category-id');
+    
+    // Set the category_id in the hidden input field
+    $(this).find('#category_id').val(categoryId);
+});
+
 
     // Initial population of categories and setting the current time
     setCurrentTime(); // Call the function to set the time
