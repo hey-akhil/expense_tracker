@@ -264,7 +264,7 @@ $total_income = array_sum(array_column($incomes, 'amount'));
             function deleteExpense(id) {
                 if (confirm('Are you sure you want to delete this expense?')) {
                     $.ajax({
-                        url: 'delete_record.php',
+                        url: 'delete_expense.php',
                         type: 'POST',
                         data: { id: id, type: 'expense' },
                         success: function(response) {
@@ -280,7 +280,7 @@ $total_income = array_sum(array_column($incomes, 'amount'));
             function deleteIncome(id) {
                 if (confirm('Are you sure you want to delete this income?')) {
                     $.ajax({
-                        url: 'delete_record.php',
+                        url: 'delete_income.php',
                         type: 'POST',
                         data: { id: id, type: 'income' },
                         success: function(response) {
