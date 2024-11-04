@@ -141,6 +141,7 @@ if ($month_year || ($start_date && $end_date)) {
                     <th>#</th>
                     <th>Type</th>
                     <th>Category</th>
+                    <th>Description</th>
                     <th>Amount</th>
                     <th>Date</th>
                 </tr>
@@ -151,6 +152,7 @@ if ($month_year || ($start_date && $end_date)) {
                         <td><?php echo $index + 1; ?></td>
                         <td><?php echo htmlspecialchars($transaction['type']); ?></td>
                         <td><?php echo htmlspecialchars($transaction['category']); ?></td>
+                        <td><?php echo htmlspecialchars($transaction['description']); ?></td>
                         <td>₹<?php echo number_format($transaction['amount'], 2); ?></td>
                         <td><?php echo date('d-m-Y | g:i A', strtotime($transaction['created_at'])); ?></td>
                     </tr>
