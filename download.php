@@ -4,6 +4,9 @@ require 'dompdf/autoload.inc.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
+// Set the default timezone
+date_default_timezone_set('Asia/Kolkata'); // Change to your timezone
+
 // Database connection
 include 'db.php';
 session_start();
@@ -21,8 +24,7 @@ $month_year = $_GET['month'] ?? date('Y-m'); // Default to current month
 $query = "SELECT type, category, amount, created_at 
           FROM expenses 
           WHERE user_id = ? 
-          AND DATE_FORMAT(created_at, '%Y-%m') = ?;
-        --   ORDER BY created_at DESC";
+          AND DATE_FORMAT(created_at, '%Y-%m') = ?;";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("is", $user_id, $month_year);
 $stmt->execute();
@@ -112,7 +114,6 @@ if ($total_expense > $total_income) {
         <h3 style="color: green; margin: 5px 0 0 0;">You Save: Rs.' . number_format($difference, 2) . ' This Month</h3>
     </div>';
 }
-
 
 $html .= '
     <div class="footer">
